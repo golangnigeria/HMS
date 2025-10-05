@@ -1,0 +1,16 @@
+# Ignore dependencies
+node_modules
+vendor
+
+# Ignore build artifacts
+*.exe
+*.out
+*.log
+
+# Git
+.git
+.gitignore
+
+# IDE/editor folders
+.vscode
+.idea
