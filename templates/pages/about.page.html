@@ -1,0 +1,143 @@
+{{template "base" .}}
+{{define "title"}}About - KiLab{{end}}
+
+{{define "css"}}
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+{{end}}
+
+{{define "content"}}
+<!-- Hero Section -->
+<section class="relative bg-gradient-to-r from-primary to-primary-dark text-white py-20">
+  <div class="container mx-auto max-w-6xl px-6 text-center">
+    <h1 class="text-5xl font-extrabold mb-4">About KiLab</h1>
+    <p class="max-w-2xl mx-auto text-lg opacity-90">
+      Connecting patients, doctors, and laboratories with trust, speed, and transparency.
+    </p>
+  </div>
+</section>
+
+<!-- About Us -->
+<div class="container mx-auto max-w-6xl px-6 py-16 space-y-20">
+  <div class="text-center">
+    <p class="font-semibold uppercase tracking-wider text-primary">About Us</p>
+    <h2 class="mt-2 text-4xl font-extrabold text-slate-900 dark:text-white">Connecting Healthcare, One Referral at a Time</h2>
+    <p class="mx-auto mt-4 max-w-3xl text-lg text-slate-600 dark:text-slate-400">
+      Our mission is to revolutionize healthcare by seamlessly connecting
+      patients, doctors, and laboratories through an intelligent referral
+      system, ensuring timely and accurate medical testing while fostering
+      collaborative partnerships.
+    </p>
+  </div>
+
+  <!-- Values Section -->
+  <section class="py-12 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 rounded-3xl shadow-lg">
+    <div class="text-center mb-12">
+      <p class="text-sm font-semibold uppercase tracking-widest text-primary">Our Core Values</p>
+      <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white">What Drives Us Forward</h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4">
+      <!-- Single Value -->
+      <div class="group p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition">
+        <div class="flex items-center justify-center h-16 w-16 rounded-xl bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-white transition">
+          <i class="ri-heart-line text-3xl"></i>
+        </div>
+        <h3 class="text-xl font-bold">Patient-Centric</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-400 text-sm">We put patients first, ensuring their care and satisfaction above all else.</p>
+      </div>
+      <div class="group p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition">
+        <div class="flex items-center justify-center h-16 w-16 rounded-xl bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-white transition">
+          <i class="ri-team-line text-3xl"></i>
+        </div>
+        <h3 class="text-xl font-bold">Collaboration</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-400 text-sm">We believe in teamwork between patients, doctors, and laboratories.</p>
+      </div>
+      <div class="group p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition">
+        <div class="flex items-center justify-center h-16 w-16 rounded-xl bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-white transition">
+          <i class="ri-shield-check-line text-3xl"></i>
+        </div>
+        <h3 class="text-xl font-bold">Integrity</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-400 text-sm">We uphold honesty and transparency to build long-lasting trust.</p>
+      </div>
+      <div class="group p-8 bg-white dark:bg-slate-900 rounded-2xl shadow-md hover:shadow-2xl hover:scale-105 transition">
+        <div class="flex items-center justify-center h-16 w-16 rounded-xl bg-primary/10 text-primary mb-4 group-hover:bg-primary group-hover:text-white transition">
+          <i class="ri-eye-line text-3xl"></i>
+        </div>
+        <h3 class="text-xl font-bold">Transparency</h3>
+        <p class="mt-2 text-slate-600 dark:text-slate-400 text-sm">We are open and accountable, ensuring confidence in our process.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">The Problem We Solve</h3>
+      <p class="text-lg text-slate-600 dark:text-slate-400">
+        Traditional referrals are fragmented and inefficient, causing delays, errors, and dissatisfaction. 
+        We streamline this with an intelligent referral process that’s faster and more accurate.
+      </p>
+    </div>
+    <div class="hidden md:block">
+      <i class="ri-hospital-line text-primary text-[120px]"></i>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="py-12">
+    <h3 class="mb-10 text-2xl font-bold text-slate-900 dark:text-white text-center">Benefits for All</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow hover:shadow-xl transition">
+        <h4 class="text-lg font-semibold text-primary">For Patients</h4>
+        <ul class="mt-4 space-y-3 text-slate-600 dark:text-slate-400">
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> Faster test results.</li>
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> Convenient access to labs.</li>
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> Improved accuracy.</li>
+        </ul>
+      </div>
+      <div class="rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow hover:shadow-xl transition">
+        <h4 class="text-lg font-semibold text-primary">For Doctors</h4>
+        <ul class="mt-4 space-y-3 text-slate-600 dark:text-slate-400">
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> Collaboration with labs.</li>
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> Data-driven insights.</li>
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> Saves time.</li>
+        </ul>
+      </div>
+      <div class="rounded-xl p-6 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow hover:shadow-xl transition">
+        <h4 class="text-lg font-semibold text-primary">For Laboratories</h4>
+        <ul class="mt-4 space-y-3 text-slate-600 dark:text-slate-400">
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> More referrals & growth.</li>
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> Fair compensation.</li>
+          <li><i class="ri-check-double-line mr-2 text-primary"></i> Service quality tracking.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="py-12">
+    <h3 class="mb-10 text-2xl font-bold text-slate-900 dark:text-white text-center">Our Team</h3>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Single Team Member -->
+      <div class="bg-white dark:bg-slate-900 rounded-xl shadow hover:shadow-lg transition p-6 text-center">
+        <div class="h-24 w-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 mb-4"></div>
+        <h4 class="text-lg font-semibold text-slate-900 dark:text-white">Dr. Jane Doe</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Chief Medical Officer</p>
+      </div>
+      <div class="bg-white dark:bg-slate-900 rounded-xl shadow hover:shadow-lg transition p-6 text-center">
+        <div class="h-24 w-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 mb-4"></div>
+        <h4 class="text-lg font-semibold text-slate-900 dark:text-white">John Smith</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Tech Lead</p>
+      </div>
+      <div class="bg-white dark:bg-slate-900 rounded-xl shadow hover:shadow-lg transition p-6 text-center">
+        <div class="h-24 w-24 mx-auto rounded-full bg-slate-200 dark:bg-slate-700 mb-4"></div>
+        <h4 class="text-lg font-semibold text-slate-900 dark:text-white">Mary Johnson</h4>
+        <p class="text-sm text-slate-600 dark:text-slate-400">Operations Manager</p>
+      </div>
+    </div>
+  </section>
+</div>
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/js/main.js"></script>
+{{end}}

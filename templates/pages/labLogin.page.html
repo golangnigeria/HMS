@@ -1,0 +1,103 @@
+{{template "base" .}} {{define "title"}}Patient's Login - KiLab{{end}} {{define
+"css"}}
+<link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+{{end}} {{define "content"}}
+<main class="flex flex-1 items-center justify-center py-12 sm:px-6 lg:px-8">
+  <div class="w-full max-w-md space-y-8">
+    <div class="text-center">
+      <h2
+        class="text-3xl font-bold tracking-tight text-background-dark dark:text-background-light"
+      >
+        Welcome back, Everight
+      </h2>
+      <p
+        class="mt-2 text-sm text-background-dark/60 dark:text-background-light/60"
+      >
+        Sign in to access your dashboard.
+      </p>
+    </div>
+    <form action="#" class="space-y-6" method="POST">
+      <div
+        class="space-y-4 rounded-lg bg-background-light p-4 shadow-sm dark:bg-background-dark/50 sm:p-6"
+      >
+        <div>
+          <label
+            class="block text-sm font-medium text-background-dark dark:text-background-light"
+            for="email"
+            >Email address</label
+          >
+          <div class="mt-1">
+            <input
+              autocomplete="email"
+              class="form-input block w-full rounded border-primary/30 bg-background-light dark:bg-background-dark dark:text-background-light placeholder-background-dark/40 dark:placeholder-background-light/40 focus:border-primary focus:ring-primary"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              required=""
+              type="email"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            class="block text-sm font-medium text-background-dark dark:text-background-light"
+            for="password"
+            >Password</label
+          >
+          <div class="mt-1">
+            <input
+              autocomplete="current-password"
+              class="form-input block w-full rounded border-primary/30 bg-background-light dark:bg-background-dark dark:text-background-light placeholder-background-dark/40 dark:placeholder-background-light/40 focus:border-primary focus:ring-primary"
+              id="password"
+              name="password"
+              placeholder="••••••••"
+              required=""
+              type="password"
+            />
+          </div>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input
+              class="form-checkbox h-4 w-4 rounded border-primary/30 text-primary focus:ring-primary"
+              id="remember-me"
+              name="remember-me"
+              type="checkbox"
+            />
+            <label
+              class="ml-2 block text-sm text-background-dark dark:text-background-light"
+              for="remember-me"
+              >Remember me</label
+            >
+          </div>
+          <div class="text-sm">
+            <a class="font-medium text-primary hover:text-primary/80" href="#"
+              >Forgot your password?</a
+            >
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          class="flex w-full justify-center rounded-lg bg-primary px-4 py-3 text-sm font-bold text-white shadow-sm transition-opacity hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background-light dark:focus:ring-offset-background-dark"
+          type="submit"
+        >
+          Log In
+        </button>
+      </div>
+    </form>
+    <p
+      class="mt-6 text-center text-sm text-background-dark/60 dark:text-background-light/60"
+    >
+      Don't have an account?
+      <a class="font-medium text-primary hover:text-primary/80" href="/registration/role/lab"
+        >Sign up</a
+      >
+    </p>
+  </div>
+</main>
+
+{{end}}

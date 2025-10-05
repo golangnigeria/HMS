@@ -1,0 +1,152 @@
+{{template "base" .}}
+{{define "title"}}Home - KiLab{{end}}
+
+{{define "css"}}
+<link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+{{end}}
+
+{{define "content"}}
+
+<!-- Hero Section -->
+<section class="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-b from-primary/10 via-white to-white dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+    <h1
+      class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white"
+    >
+      Connecting Healthcare. <br class="hidden sm:block"/> Simplifying Referrals.
+    </h1>
+    <p
+      class="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-slate-600 dark:text-slate-400"
+    >
+      Our intelligent platform seamlessly connects patients, doctors, and
+      laboratories for efficient medical test referrals and rewarding
+      partnerships.
+    </p>
+    <div class="mt-8 flex justify-center gap-4">
+      <a
+        href="#"
+        class="px-6 py-3 rounded-lg bg-primary text-white font-semibold shadow-md hover:shadow-xl hover:bg-primary-dark transition"
+      >
+        Get Started
+      </a>
+      <a
+        href="#"
+        class="px-6 py-3 rounded-lg bg-white text-primary font-semibold border border-primary hover:bg-primary/10 transition dark:bg-slate-900 dark:border-slate-700"
+      >
+        Learn More
+      </a>
+    </div>
+  </div>
+  <!-- background decorative blur -->
+  <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/20 blur-3xl rounded-full"></div>
+  <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-secondary/20 blur-3xl rounded-full"></div>
+</section>
+
+<!-- Roles Section -->
+<section class="py-20 sm:py-32">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+      <!-- Patient -->
+      <div
+        class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 duration-300 flex flex-col text-center items-center"
+      >
+        <div
+          class="w-28 h-28 rounded-full bg-cover bg-center mb-6 ring-4 ring-primary/20"
+          style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCZAdsPPCLA6fJiJg-KfuT5szi5nSWIXb2k87JMT_46wMO7I1m1P1LmSV6D9mav9F6MReHh6MX9DHMsN_M74ys25jfVHf-G8X61s3594ZhhGf9BHgsBSxWQr9z95xr1v9aeDz8Hua0IvAnhbUrGDeMymoHBJ2ylw0UhNseJoxUQo9h2TaMmPOM2Qj5aWhLnKnZe2H5MQhrXEqoej3E1_LcluLEjlX07dstnLhAZ2ChiI_MVqmwPNsnI1v8sHKO9rKo4lZWglXII1eOs');"
+        ></div>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+          I am a Patient
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+          Easily manage your referrals, find top-rated labs, and access your test results all in one place.
+        </p>
+        <a
+          href="#"
+          class="mt-auto w-full text-center bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-dark transition"
+        >
+          Get Started
+        </a>
+      </div>
+
+      <!-- Doctor -->
+      <div
+        class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 duration-300 flex flex-col text-center items-center"
+      >
+        <div
+          class="w-28 h-28 rounded-full bg-cover bg-center mb-6 ring-4 ring-primary/20"
+          style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBoKT39TqGvkocpadLlattkeEEnC6CwKwjjOZmIgmIWrUJzTm3AgLUoR6kpdOSA-Z_iYE_5wQA41Iy0WRwsA8IkhKjWAaUxetlvKYD2ev3qKK3m3jm826E40MqPK0dNohjg8Ok1NjXuCsuTrXhnisketMXlZ30qLptAWXuIWeX3xlMLaaRBtLoJx_jhGjoKVmvb4uWiwyYrNYUZz85ZKmvqmVf8odBLqMLiHjLRTzyGfNphH7_3sDyPzQc3apTz00NL6f4OXA8CfJ-');"
+        ></div>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+          I am a Doctor / Clinic
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+          Streamline your referral process, connect with trusted labs, and get rewarded for your quality partnerships.
+        </p>
+        <a
+          href="#"
+          class="mt-auto w-full text-center bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-dark transition"
+        >
+          Join the Network
+        </a>
+      </div>
+
+      <!-- Lab -->
+      <div
+        class="bg-white dark:bg-slate-900 p-8 rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 duration-300 flex flex-col text-center items-center"
+      >
+        <div
+          class="w-28 h-28 rounded-full bg-cover bg-center mb-6 ring-4 ring-primary/20"
+          style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDSIl9NzQ-KsL2j0oKFR1kcMKwG_PP7V1CtXled8EkIfX48Hc0uV2wG2XnGdwh7BTzUHdygBItP492SaCeZHY-fKjNZGTyUhMyZZeJkMP2IjwBPESryy2ZlrL4tlIa5BD5YNHs7NjC4r_m8fAnqrMcCpyFfMMibb9nxS0F41cZYi9EdHuMKonENVUeySaMctwJdYt3DyfFWXVJ7__Ut7KLmK-fV747FmB9Znynztdw_FwyjqR6F_hfSQgisNILMOCQXlYG3BTf47byj');"
+        ></div>
+        <h2 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">
+          I am a Laboratory
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+          Expand your reach, receive automated referrals, and build strong relationships with clinics and doctors.
+        </p>
+        <a
+          href="#"
+          class="mt-auto w-full text-center bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-dark transition"
+        >
+          Become a Partner
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="bg-gradient-to-b from-white to-slate-50 dark:from-slate-900 dark:to-slate-950 py-20 sm:py-32">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white mb-4">
+      What Our Users Say
+    </h2>
+    <p class="text-lg text-slate-600 dark:text-slate-400 mb-12">
+      Discover how our platform is transforming healthcare connections.
+    </p>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-xl p-8 relative">
+        <span class="absolute -top-6 left-8 text-5xl text-primary opacity-20">
+          <i class="ri-double-quotes-l"></i>
+        </span>
+        <blockquote class="text-lg italic text-slate-600 dark:text-slate-300">
+          "This platform has revolutionized how I manage my patient referrals. It's intuitive, efficient, and has saved me countless hours of administrative work. My patients love the seamless experience too!"
+        </blockquote>
+        <footer class="mt-6">
+          <p class="font-semibold text-primary">Dr. Emily Carter</p>
+          <p class="text-sm text-slate-500 dark:text-slate-400">General Practitioner</p>
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/js/main.js"></script>
+{{end}}

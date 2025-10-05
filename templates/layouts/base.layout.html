@@ -1,0 +1,51 @@
+{{define "base"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Standard favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/static/assests/favicon1.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/assests/favicon1.png">
+
+<!-- Apple iOS -->
+<link rel="apple-touch-icon" href="/static/assests/favicon1.png">
+
+<!-- Modern browsers prefer SVG (optional if you have one) -->
+<link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg">
+
+
+  <title>{{block "title" .}}KiLab - Health & Labs{{end}}</title>
+
+  <!-- The css links -->
+   <link rel="stylesheet" href="/static/css/output.css" />
+
+  {{block "css" .}}{{end}}
+
+  <!-- Icon Link -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+
+<!-- Alphine js cdn link -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark"> 
+  <div class="flex flex-col min-h-screen">
+
+  {{template "navbar" .}}
+
+  <main class="flex-1">
+    {{block "content" .}}{{end}}
+  </main>
+
+  {{template "footer" .}}
+  </div>
+  <script src="/static/js/main.js"></script>
+  {{block "scripts" .}}{{end}}
+</body>
+</html>
+{{end}}

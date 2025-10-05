@@ -1,0 +1,79 @@
+{{define "footer"}}
+<footer class="bg-content-light dark:bg-content-dark border-t border-border-light dark:border-border-dark">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+    <!-- Top Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <!-- Logo + About -->
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-white">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <span class="text-2xl font-bold text-primary-light dark:text-primary-dark">KiLab</span>
+        </div>
+        <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark">
+          Connecting patients, doctors, and laboratories for a healthier tomorrow.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex space-x-4 mt-4">
+          <a href="#" class="text-text-secondary-light dark:text-text-secondary-dark hover:text-primary">
+            <i class="ri-facebook-circle-fill text-2xl"></i>
+          </a>
+          <a href="#" class="text-text-secondary-light dark:text-text-secondary-dark hover:text-primary">
+            <i class="ri-twitter-x-line text-2xl"></i>
+          </a>
+          <a href="#" class="text-text-secondary-light dark:text-text-secondary-dark hover:text-primary">
+            <i class="ri-linkedin-box-fill text-2xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Platform Links -->
+      <div>
+        <h3 class="font-semibold text-primary-light dark:text-primary-dark mb-4">Platform</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="footer-link">For Patients</a></li>
+          <li><a href="#" class="footer-link">For Doctors</a></li>
+          <li><a href="#" class="footer-link">For Labs</a></li>
+        </ul>
+      </div>
+
+      <!-- Company Links -->
+      <div>
+        <h3 class="font-semibold text-primary-light dark:text-primary-dark mb-4">Company</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="footer-link">About Us</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+          <li><a href="#" class="footer-link">Press</a></li>
+          <li><a href="#" class="footer-link">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h3 class="font-semibold text-primary-light dark:text-primary-dark mb-4">Stay Updated</h3>
+        <p class="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-3">
+          Subscribe to get the latest healthcare insights & updates.
+        </p>
+        <form class="flex">
+          <input type="email" placeholder="Enter your email"
+            class="w-full rounded-l-lg border border-border-light dark:border-border-dark px-3 py-2 text-sm focus:ring-primary focus:border-primary dark:bg-content-dark dark:text-text-primary-dark" />
+          <button type="submit"
+            class="bg-primary hover:bg-primary-dark text-white px-4 rounded-r-lg text-sm font-medium">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Bottom -->
+    <div class="mt-10 pt-6 border-t border-border-light dark:border-border-dark text-center text-sm text-text-secondary-light dark:text-text-secondary-dark">
+      <p>© 2025 KiLab. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+{{end}}

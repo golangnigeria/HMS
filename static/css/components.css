@@ -1,0 +1,165 @@
+/* ==========================================================================
+   COMPONENTS.CSS — UI building blocks
+   ========================================================================== */
+
+/* Containers */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border-radius: var(--r-2);
+  padding: 1rem;
+  box-shadow: var(--shadow-1);
+}
+
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--r-2);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  transition: transform 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-gradient {
+  background: linear-gradient(90deg, var(--gradient-1-start), var(--gradient-1-end));
+  color: white;
+}
+
+/* Forms */
+.input, .select, .textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--input-border);
+  border-radius: var(--r-1);
+  background: var(--input-bg);
+}
+.input:focus, .select:focus, .textarea:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--focus-ring);
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  box-shadow: var(--shadow-1);
+  background:inherit;
+  z-index: 40;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5rem;
+}
+
+
+/* Navigation styling. */
+.logo{
+     font-family:'Roboto Slab', serif;
+    text-decoration: none;
+    display: flex;
+    gap: var(--gap-xs);
+     transition: transform 0.15s ease;
+}
+
+.logo:hover a{
+    text-decoration: none;
+    transform: translateY(-1px); 
+}
+
+.logo img{
+    width: 30px;
+    border-radius: 50% 0 50% 0;
+}
+
+.logo-name{
+    display: block;
+}
+
+.logo-name::first-letter{
+    font-size:var(--gap-lg);
+}
+
+.span{
+    font-size: 1.5rem;
+    color: var(--orange-1);
+    font-weight: 500;
+}
+
+.btn__menu{
+    position: absolute;
+    right: 2rem;
+    background: var(--);
+}
+
+
+.nav__menu{
+    position: absolute;
+    background: var(--bg);
+    right: 2rem;
+    top: 5rem;
+    padding: 0.4rem;
+    z-index: 30;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 50%  0% 0% 0%;
+     
+}
+
+.nav__list{
+     list-style: none;
+}
+
+.nav__list li{
+    background: var(--focus-ring);
+    margin: .5rem auto;
+    padding:12px 50px;
+    border-radius: var(--r-3);
+}
+
+.authentication__btn{
+    position: absolute;
+    right: 6rem;
+    background-color: var(--accent-2);
+}
+
+
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th, .table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+.table th { text-align: left; font-weight: 600; }
+
+/* Hero section */
+.hero {
+  padding: 3rem 1rem;
+  color: white;
+  background: linear-gradient(135deg, var(--gradient-1-start), var(--gradient-1-end));
+  border-radius: var(--r-3);
+  text-align: center;
+  margin-top: 7rem;
+}

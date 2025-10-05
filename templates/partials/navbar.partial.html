@@ -1,0 +1,91 @@
+{{define "navbar"}}
+<header 
+  x-data="{ open: false, authMenu: null }" 
+  class="bg-content-light/80 dark:bg-content-dark/80 backdrop-blur-sm sticky top-0 z-50 transition-colors duration-300"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <a href="/" class="text-2xl font-bold text-primary-light dark:text-primary-dark">
+          Ki<span class="text-orange-700">Lab</span>
+        </a>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/about" class="nav-link">About Us</a>
+        <a href="/contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right Buttons -->
+      <div class="flex items-center gap-3 relative">
+        <!-- Log In Dropdown -->
+        <div class="relative" x-data="{ openLogin: false }">
+          <button 
+            @click="openLogin = !openLogin" 
+            class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-primary/5 transition"
+          >
+            Log In
+          </button>
+          <div 
+            x-show="openLogin" 
+            @click.away="openLogin = false"
+            x-transition 
+            class="absolute right-0 mt-2 w-40 bg-content-light dark:bg-content-dark border border-border-light dark:border-border-dark rounded-lg shadow-lg py-2"
+          >
+            <a href="/login/role/patient" class="dropdown-link">Patient</a>
+            <a href="/login/role/doctor" class="dropdown-link">Doctor</a>
+            <a href="/login/role/lab" class="dropdown-link">Lab</a>
+          </div>
+        </div>
+
+        <!-- Sign Up Dropdown -->
+        <div class="relative" x-data="{ openSignup: false }">
+          <button 
+            @click="openSignup = !openSignup" 
+            class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-primary-dark transition"
+          >
+            Sign Up
+          </button>
+          <div 
+            x-show="openSignup" 
+            @click.away="openSignup = false"
+            x-transition 
+            class="absolute right-0 mt-2 w-40 bg-content-light dark:bg-content-dark border border-border-light dark:border-border-dark rounded-lg shadow-lg py-2"
+          >
+            <a href="/registration/role/patient" class="dropdown-link">Patient</a>
+            <a href="/registration/role/doctor" class="dropdown-link">Doctor</a>
+            <a href="/registration/role/lab" class="dropdown-link">Lab</a>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button @click="open = !open" class="md:hidden p-2 rounded-lg hover:bg-primary/10 focus:outline-none">
+          <svg x-show="!open" class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg x-show="open" class="h-6 w-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div x-show="open" x-transition class="md:hidden bg-content-light dark:bg-content-dark border-t border-border-light dark:border-border-dark">
+    <nav class="flex flex-col space-y-2 px-6 py-4">
+      <a href="/" class="mobile-link">Home</a>
+      <a href="/about" class="mobile-link">About Us</a>
+      <a href="/contact" class="mobile-link">Contact</a>
+    </nav>
+  </div>
+</header>
+ 
+{{end}}
