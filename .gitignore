@@ -17,6 +17,7 @@ pids
 .env
 .env.local
 .env.*.local
+database.yml
 
 # Build output
 dist/

@@ -1,0 +1,20 @@
+create_table("doctors"){
+  t.Column("id", "uuid", {primary: true})
+  t.Column("full_name", "string", {null: false})
+  t.Column("email", "string", {null: false})
+  t.Column("phone_number", "string", {"size": 20})
+  t.Column("specialization", "string", {})
+  t.Column("license_number", "string", {null: false})
+  t.Column("clinic_name", "string", {})
+  t.Column("clinic_location", "string", {})
+  t.Column("clinic_name_street", "string", {})
+  t.Column("bank_account_number", "string", {})
+  t.Column("bank_name", "string", {})
+  t.Column("bank_name_test", "string", {})
+  t.Column("password_hash", "string", {"size": 60, null: false})
+  t.Column("rating", "decimal", {"scale": 2, "precision": 3, default: 0})
+  t.Column("created_at", "timestamp", {"default": "now()"})
+  t.Column("updated_at", "timestamp", {"default": "now()"})
+}
+
+ 
