@@ -1,40 +1,20 @@
-# Makefile for Go + Air + Templ development
+# Windows-safe Goose Makefile (PowerShell version)
+GOOSE = $(GOPATH)/bin/goose
+MIGRATIONS_DIR = internals/driver/migrations
 
-# Binaries
-AIR = air
-TEMPL = templ
-GO = go
+# Create new migration
+new:
+	if not exist $(MIGRATIONS_DIR) mkdir $(MIGRATIONS_DIR)
+	powershell -Command "$$env:DATABASE_URL=(Get-Content .env | ForEach-Object { if ($$_ -match '^DATABASE_URL=(.*)$$') { $$matches[1] } }); & '$(GOOSE)' -dir $(MIGRATIONS_DIR) create $(name) sql"
 
-# Paths
-CMD = ./cmd/web   # adjust to your main.go path
-BINARY = app
+# Apply all up migrations
+migrate-up:
+	powershell -Command "$$env:DATABASE_URL=(Get-Content .env | ForEach-Object { if ($$_ -match '^DATABASE_URL=(.*)$$') { $$matches[1] } }); & '$(GOOSE)' -dir $(MIGRATIONS_DIR) postgres $$env:DATABASE_URL up"
 
-# Default target
-.PHONY: dev
-dev: generate
-	$(AIR)
+# Roll back one migration
+migrate-down:
+	powershell -Command "$$env:DATABASE_URL=(Get-Content .env | ForEach-Object { if ($$_ -match '^DATABASE_URL=(.*)$$') { $$matches[1] } }); & '$(GOOSE)' -dir $(MIGRATIONS_DIR) postgres $$env:DATABASE_URL down"
 
-# Run the app without hot reload
-.PHONY: run
-run: generate
-	$(GO) run $(CMD)
-
-# Generate templ components
-.PHONY: generate
-generate:
-	$(TEMPL) generate
-
-# Build the app
-.PHONY: build
-build: generate
-	$(GO) build -o $(BINARY) $(CMD)
-
-# Clean build artifacts
-.PHONY: clean
-clean:
-	rm -f $(BINARY)
-
-# Run tests
-.PHONY: test
-test:
-	$(GO) test ./... -v
+# Show migration status
+migrate-status:
+	powershell -Command "$$env:DATABASE_URL=(Get-Content .env | ForEach-Object { if ($$_ -match '^DATABASE_URL=(.*)$$') { $$matches[1] } }); & '$(GOOSE)' -dir $(MIGRATIONS_DIR) postgres $$env:DATABASE_URL status"
