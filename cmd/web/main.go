@@ -87,7 +87,7 @@ func main() {
 	fmt.Printf("Starting application on port %s", portNumber)
 	srv := &http.Server{
 		Addr:    portNumber,
-		Handler: routes(&app),
+		Handler: SetupRouter(&app),
 	}
 
 	err = srv.ListenAndServe()

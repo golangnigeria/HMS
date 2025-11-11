@@ -13,3 +13,12 @@ type User struct {
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
 }
+
+
+type Test struct {
+	ID       int
+	Name     string
+	Category string
+	Price    string
+	Status   string
+}

@@ -36,42 +36,75 @@ func NewHandlers(r *Repository) {
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	td := &models.TemplateData{
 		StringMap: map[string]string{
-			"welcome": "Welcome to KiLab",
-			"tagline": "Simplifying healthcare connections between patients, doctors, and laboratories.",
+			"doctorName": "Dr. Adaobi Okeke",
+			"welcome":    "Your Health, Our Priority",
+			"tagline":    "Personalized medical consultations, health insights, and wellness programs — all in one place.",
+			"cta":        "Book your consultation today and take charge of your health.",
 		},
 		IntMap: map[string]int{
-			"totalPatients": 1342,
-			"totalDoctors":  245,
-			"totalLabs":     82,
+			"consultationsCompleted": 1200,
+			"happyPatients":          980,
+			"articlesPublished":      75,
 		},
 		FloatMap: map[string]float32{
-			"referralSuccessRate": 98.4,
+			"patientSatisfaction": 97.5,
 		},
 		Data: map[string]any{
+			"services": []map[string]string{
+				{
+					"title":       "Online Consultation",
+					"description": "Schedule video sessions and receive professional medical advice from the comfort of your home.",
+					"icon":        "💻",
+				},
+				{
+					"title":       "In-Person Consultation",
+					"description": "Visit our clinic for personalized checkups and wellness assessments.",
+					"icon":        "🏥",
+				},
+				{
+					"title":       "Follow-up & Monitoring",
+					"description": "Stay on track with continuous follow-ups and progress tracking plans.",
+					"icon":        "📋",
+				},
+			},
 			"testimonials": []map[string]string{
 				{
-					"name":    "Dr. Adaobi Okeke",
-					"comment": "KiLab has made patient referrals effortless and transparent.",
+					"name":    "Chinedu M.",
+					"comment": "Dr. Adaobi is not only professional but also genuinely caring. My lifestyle has completely improved!",
 				},
 				{
-					"name":    "Emeka, Patient",
-					"comment": "I received my test results faster than ever before. Highly recommend!",
+					"name":    "Ngozi E.",
+					"comment": "Booking a consultation was so easy. The follow-up and guidance were excellent.",
 				},
 				{
-					"name":    "LabOne Diagnostics",
-					"comment": "Our lab receives consistent, trusted referrals daily.",
+					"name":    "Uche Health Blog Reader",
+					"comment": "Her articles helped me understand nutrition and mental balance better.",
 				},
 			},
-			"roles": []map[string]string{
-				{"name": "Patient", "description": "Access test results and manage referrals easily."},
-				{"name": "Doctor", "description": "Refer patients and track lab results seamlessly."},
-				{"name": "Laboratory", "description": "Receive referrals and expand your partnerships."},
+			"featuredArticles": []map[string]string{
+				{
+					"title": "Healthy Nutrition for Busy People",
+					"slug":  "healthy-nutrition-for-busy-people",
+					"image": "/images/nutrition.jpg",
+				},
+				{
+					"title": "Managing Stress the Smart Way",
+					"slug":  "managing-stress-the-smart-way",
+					"image": "/images/stress.jpg",
+				},
+				{
+					"title": "Why Regular Checkups Matter",
+					"slug":  "why-regular-checkups-matter",
+					"image": "/images/checkup.jpg",
+				},
 			},
 		},
+		Active: "home",
 	}
 
 	render.RenderTemplate(w, r, "home.page.html", td)
 }
+
 
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	td := &models.TemplateData{}

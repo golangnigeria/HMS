@@ -1,51 +1,62 @@
 {{define "base"}}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="{ 
+  theme: localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+  toggleTheme() {
+    this.theme = this.theme === 'light' ? 'dark' : 'light';
+    localStorage.theme = this.theme;
+  }
+}" x-init="$watch('theme', val => document.documentElement.setAttribute('data-theme', val))" 
+x-bind:data-theme="theme">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Doctor’s personal website for health talks, consultations, and online courses.">
+  <meta name="author" content="KiLab Health">
 
-  <!-- Standard favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="/static/assests/favicon1.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/static/assests/favicon1.png">
+  <!-- Favicon & App Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon1.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon1.png" />
+  <link rel="apple-touch-icon" href="/static/assets/favicon1.png" />
+  <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg" />
 
-<!-- Apple iOS -->
-<link rel="apple-touch-icon" href="/static/assests/favicon1.png">
+  <!-- Title -->
+  <title>{{block "title" .}}KiLab — Health & Labs{{end}}</title>
 
-<!-- Modern browsers prefer SVG (optional if you have one) -->
-<link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg">
-
-
-  <title>{{block "title" .}}KiLab - Health & Labs{{end}}</title>
-
-  <!-- The css links -->
-   <link rel="stylesheet" href="/static/css/output.css" />
-
+  <!-- Core Styles -->
+  <link rel="stylesheet" href="/static/css/output.css" />
+  
   {{block "css" .}}{{end}}
 
-  <!-- Icon Link -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
+  <!-- Remix Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+ 
 
-<!-- Alphine js cdn link -->
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
+  <!-- Alpine.js -->
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-text-primary-light dark:text-text-primary-dark"> 
-  <div class="flex flex-col min-h-screen">
 
-  {{template "navbar" .}}
+<body >
+  <div class="layout">
+    <!-- Navbar -->
+    {{template "navbar" .}}
 
-  <main class="flex-1">
-    {{block "content" .}}{{end}}
-  </main>
+    <!-- Main Content -->
+    <main class="main-content">
+      {{block "content" .}}{{end}}
+    </main>
 
-  {{template "footer" .}}
+    <!-- Footer -->
+    {{template "footer" .}}
   </div>
-  <script src="/static/js/main.js"></script>
+
+  <!-- Scripts -->
+  <script src="./static/js/main.js"></script>
+   
   {{block "scripts" .}}{{end}}
-</body>
+
+  <script>
+   
+  </script>
 </html>
 {{end}}

@@ -1,0 +1,69 @@
+{{define "search_bar"}}
+<!-- Search Bar -->
+<div
+  class="px-3 sm:px-6 py-3 sm:py-6 
+         bg-gradient-to-r from-primary/5 via-primary/10 to-transparent 
+         dark:from-primary/10 dark:via-primary/20"
+  x-data="{ query: '', searchResults: [] }"
+>
+  <div class="relative w-full max-w-full sm:max-w-2xl mx-auto">
+    <!-- Search Icon -->
+    <i
+      class="ri-search-line absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 
+             text-primary/70 dark:text-primary text-lg sm:text-xl"
+    ></i>
+
+    <!-- Input -->
+    <input
+      x-model="query"
+      type="text"
+      placeholder="Search tests by name, category, or ID..."
+      class="peer w-full pl-10 sm:pl-12 pr-12 sm:pr-14 py-2.5 sm:py-3.5 
+             rounded-lg sm:rounded-xl border border-slate-200 dark:border-slate-700
+             bg-white/95 dark:bg-slate-800/90 backdrop-blur-sm 
+             shadow-sm text-sm sm:text-base text-slate-800 dark:text-slate-200 
+             placeholder-slate-400 focus:ring-4 focus:ring-primary/30 focus:border-primary
+             outline-none transition-all duration-300 hover:shadow-md"
+    />
+
+    <!-- Clear Button (Interactive) -->
+    <button
+      type="button"
+      x-show="query.length > 0"
+      @click="query = ''; searchResults = []"
+      class="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 
+             text-slate-400 hover:text-primary transition"
+    >
+      <i class="ri-close-circle-line text-lg sm:text-xl"></i>
+    </button>
+
+    <!-- Subtle Glow on Focus -->
+    <div
+      class="absolute inset-0 rounded-lg sm:rounded-xl ring-0 ring-primary/0 
+             peer-focus:ring-2 peer-focus:ring-primary/40 
+             transition-all duration-300 pointer-events-none"
+    ></div>
+  </div>
+
+  <!-- Suggestions Dropdown -->
+  <div
+    x-show="searchResults.length > 0"
+    class="relative w-full max-w-full sm:max-w-2xl mx-auto mt-2 sm:mt-3 
+           bg-white dark:bg-slate-800 rounded-lg sm:rounded-xl 
+           shadow-lg border border-slate-100 dark:border-slate-700 
+           overflow-hidden transition-all duration-300"
+  >
+    <template x-for="result in searchResults" :key="result.id">
+      <a
+        :href="'/lab/tests/' + result.id"
+        class="flex items-center justify-between px-3 sm:px-4 py-2.5 
+               text-xs sm:text-sm text-slate-700 dark:text-slate-200 
+               hover:bg-primary/5 dark:hover:bg-primary/10 transition"
+      >
+        <span x-text="result.name"></span>
+        <i class="ri-arrow-right-line text-slate-400 text-sm sm:text-base"></i>
+      </a>
+    </template>
+  </div>
+</div>
+{{end}}

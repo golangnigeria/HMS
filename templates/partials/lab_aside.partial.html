@@ -1,0 +1,77 @@
+{{define "lab_aside"}}
+<!-- Sidebar -->
+<aside
+  id="lab-sidebar"
+  class="fixed lg:static z-40 w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out"
+>
+  <!-- Sidebar Header -->
+  <div class="p-6 border-b border-slate-200 dark:border-slate-700 flex items-center justify-between">
+    <h1>
+      <a href="/" class="text-xl font-bold text-primary hover:text-primary/80 transition">
+        KiLab
+      </a>
+    </h1>
+    <h4 class="hidden lg:block text-xs text-slate-500 dark:text-slate-400">Logged Lab</h4>
+    <button class="lg:hidden text-slate-500 hover:text-primary transition toggle-sidebar">
+      <i class="ri-close-line text-2xl"></i>
+    </button>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="flex-1 overflow-y-auto px-3 py-4 space-y-1">
+    {{- /* Static nav items for Go template; could be generated dynamically */ -}}
+    <a href="/lab/dashboard"
+      class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition {{if eq .ActiveRoute "dashboard"}}bg-primary/10 text-primary dark:bg-primary/20{{end}}">
+      <i class="ri-dashboard-line text-lg"></i>
+      Dashboard
+    </a>
+    <a href="/lab/referrals"
+      class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition {{if eq .ActiveRoute "referrals"}}bg-primary/10 text-primary dark:bg-primary/20{{end}}">
+      <i class="ri-bar-chart-2-line text-lg"></i>
+      Referrals
+    </a>
+    <a href="/lab/patients"
+      class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition {{if eq .ActiveRoute "patients"}}bg-primary/10 text-primary dark:bg-primary/20{{end}}">
+      <i class="ri-user-3-line text-lg"></i>
+      Patients
+    </a>
+    <a href="/lab/tests"
+      class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition {{if eq .ActiveRoute "tests"}}bg-primary/10 text-primary dark:bg-primary/20{{end}}">
+      <i class="ri-flask-line text-lg"></i>
+      Tests
+    </a>
+    <a href="/lab/settings"
+      class="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition {{if eq .ActiveRoute "settings"}}bg-primary/10 text-primary dark:bg-primary/20{{end}}">
+      <i class="ri-settings-3-line text-lg"></i>
+      Settings
+    </a>
+  </nav>
+
+  <!-- User Info -->
+  <div class="p-4 border-t border-slate-200 dark:border-slate-700">
+    <div class="flex items-center gap-3">
+      <img
+        src="{{if .User.Avatar}}{{.User.Avatar}}{{else}}/static/images/default-avatar.png{{end}}"
+        alt="Avatar"
+        class="w-10 h-10 rounded-full object-cover"
+      />
+      <div class="flex-1 truncate">
+        <p class="text-sm font-semibold text-slate-800 dark:text-slate-100 truncate">
+          {{if .User.Name}}{{.User.Name}}{{else}}Guest{{end}}
+        </p>
+        <p class="text-xs text-slate-500 dark:text-slate-400 truncate">
+          {{if .User.Role}}{{.User.Role}}{{else}}Not logged in{{end}}
+        </p>
+      </div>
+
+      {{if .User}}
+      <button title="Logout" class="text-slate-400 hover:text-primary transition">
+        <i class="ri-logout-circle-r-line text-xl"></i>
+      </button>
+      {{else}}
+      <a href="/login" class="text-primary text-sm font-medium hover:underline">Login</a>
+      {{end}}
+    </div>
+  </div>
+</aside>
+{{end}}

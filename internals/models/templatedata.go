@@ -12,4 +12,8 @@ type TemplateData struct {
 	Flash     string
 	Warning   string
 	Error     string
+	User        interface{}
+	Active string 
+	Tests       []Test
+	Pagination  interface{}
 }

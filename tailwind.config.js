@@ -1,26 +1,42 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./templates/**/*.html",   // Go templates
-    "./static/js/**/*.js",     // Alpine.js or custom scripts
+    "./templates/**/*.html",
+    "./static/js/**/*.js",
   ],
-  darkMode: "class",           // enables dark mode via `class`
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        primary: "#11a4d4",
-        "primary-dark": "#0e8db5",
-        secondary: "#f0f9ff",
-        "background-light": "#f6f8f8",
-        "background-dark": "#101d22",
-        "content-light": "#ffffff",
-        "content-dark": "#1a2a31",
-        "text-primary-light": "#0d181b",
-        "text-primary-dark": "#e8f3f6",
-        "text-secondary-light": "#4c869a",
-        "text-secondary-dark": "#a0c7d4",
+        // 🔥 Main brand colors
+        primary: "#f97316", // orange-500
+        "primary-dark": "#c2410c",
+        secondary: "#ffedd5",
+
+        // 🌑 Surfaces
+        "bg-dark": "#0d0d0d",
+        "bg-light": "#ffffff",
+        "card-dark": "#1a1a1a",
+        "card-light": "#f9fafb",
+
+        // ✨ Text
+        "text-light": "#0d181b",
+        "text-dark": "#f5f5f5",
+        "text-muted-light": "#4c869a",
+        "text-muted-dark": "#a0c7d4",
+
+        // 🧱 Borders
         "border-light": "#e7f0f3",
         "border-dark": "#2b4754",
+
+        // 🌈 Accent gradients
+        "accent-1": "#fb923c",
+        "accent-2": "#ea580c",
+        "accent-3": "#c2410c",
+      },
+      backgroundImage: {
+        "gradient-orange": "linear-gradient(to right, #f97316, #ea580c, #c2410c)",
+        "gradient-radial": "radial-gradient(circle at top right, #f97316, #c2410c 70%)",
       },
       fontFamily: {
         display: ["Inter", "sans-serif"],
@@ -35,4 +51,4 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/forms")],
-}
+};

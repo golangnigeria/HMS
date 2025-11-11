@@ -1,0 +1,138 @@
+{{define "lab_table"}}
+
+<!-- Lab Test Table Section -->
+<section class="p-4 sm:p-6 flex-1">
+  <div
+    class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-sm overflow-hidden"
+  >
+    <!-- Responsive Scroll Wrapper -->
+    <div class="overflow-x-auto w-full">
+      <table class="min-w-full text-sm">
+        <thead class="bg-slate-50 dark:bg-slate-700/40">
+          <tr
+            class="text-left text-slate-600 dark:text-slate-300 border-b border-slate-200 dark:border-slate-700"
+          >
+            <th class="px-4 sm:px-6 py-3 sm:py-4 font-semibold whitespace-nowrap">
+              Test Name
+            </th>
+            <th class="px-4 sm:px-6 py-3 sm:py-4 font-semibold whitespace-nowrap">
+              Category
+            </th>
+            <th class="px-4 sm:px-6 py-3 sm:py-4 font-semibold whitespace-nowrap">
+              Price
+            </th>
+            <th class="px-4 sm:px-6 py-3 sm:py-4 font-semibold whitespace-nowrap">
+              Status
+            </th>
+            <th
+              class="px-4 sm:px-6 py-3 sm:py-4 font-semibold text-right whitespace-nowrap"
+            >
+              Actions
+            </th>
+          </tr>
+        </thead>
+
+        <tbody class="divide-y divide-slate-100 dark:divide-slate-700">
+          {{if .Data.tests}}
+            {{range .Data.tests}}
+            <tr
+              class="hover:bg-primary/5 dark:hover:bg-primary/10 transition-colors"
+            >
+              <td
+                class="px-4 sm:px-6 py-3 sm:py-4 font-medium text-slate-800 dark:text-slate-100"
+              >
+                {{.Name}}
+              </td>
+              <td class="px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-400">
+                {{.Category}}
+              </td>
+              <td class="px-4 sm:px-6 py-3 sm:py-4 text-slate-600 dark:text-slate-400">
+                {{.Price}}
+              </td>
+              <td class="px-4 sm:px-6 py-3 sm:py-4">
+                {{if eq .Status "Active"}}
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300"
+                  >
+                    <i class="ri-checkbox-circle-line text-sm"></i>
+                    Active
+                  </span>
+                {{else}}
+                  <span
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300"
+                  >
+                    <i class="ri-close-circle-line text-sm"></i>
+                    Inactive
+                  </span>
+                {{end}}
+              </td>
+              <td class="px-4 sm:px-6 py-3 sm:py-4 text-right">
+                <button
+                  class="text-primary hover:underline font-medium transition"
+                  hx-get="/lab/tests/{{.ID}}/edit"
+                  hx-target="#modal"
+                  hx-swap="innerHTML"
+                >
+                  Edit
+                </button>
+              </td>
+            </tr>
+            {{end}}
+          {{else}}
+            <tr>
+              <td
+                colspan="5"
+                class="text-center py-8 text-slate-500 dark:text-slate-400"
+              >
+                No tests available.
+              </td>
+            </tr>
+          {{end}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  {{with .Data.pagination}}
+  <div
+    class="flex flex-col sm:flex-row justify-between items-center gap-4 mt-6 px-2 sm:px-0 text-xs sm:text-sm text-slate-600 dark:text-slate-300"
+  >
+    <!-- Pagination Info -->
+    <div class="text-center sm:text-left">
+      Showing
+      <span class="font-semibold text-slate-800 dark:text-slate-100"
+        >{{.Start}}</span
+      >–
+      <span class="font-semibold text-slate-800 dark:text-slate-100"
+        >{{.End}}</span
+      >
+      of
+      <span class="font-semibold text-slate-800 dark:text-slate-100"
+        >{{.Total}}</span
+      >
+      tests
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="flex items-center gap-2">
+      <a
+        href="?page={{.Prev}}"
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-200 dark:border-slate-700 hover:bg-primary/10 transition text-xs sm:text-sm"
+      >
+        <i class="ri-arrow-left-line"></i>
+        <span>Prev</span>
+      </a>
+      <a
+        href="?page={{.Next}}"
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-200 dark:border-slate-700 hover:bg-primary/10 transition text-xs sm:text-sm"
+      >
+        <span>Next</span>
+        <i class="ri-arrow-right-line"></i>
+      </a>
+    </div>
+  </div>
+  {{end}}
+</section>
+
+{{end}}

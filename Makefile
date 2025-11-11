@@ -18,3 +18,11 @@ migrate-down:
 # Show migration status
 migrate-status:
 	powershell -Command "$$env:DATABASE_URL=(Get-Content .env | ForEach-Object { if ($$_ -match '^DATABASE_URL=(.*)$$') { $$matches[1] } }); & '$(GOOSE)' -dir $(MIGRATIONS_DIR) postgres $$env:DATABASE_URL status"
+
+# run go file
+run:
+	go run ./cmd/web
+
+# run tailwind file
+compile:
+	npx tailwindcss -i ./static/css/input.css -o ./static/css/output.css --watch  
