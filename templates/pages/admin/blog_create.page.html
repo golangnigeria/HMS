@@ -1,0 +1,112 @@
+{{template "admin" .}}
+
+{{define "title"}}Create Blog Post — KiLab Admin{{end}}
+
+{{define "content"}}
+<section class="max-w-4xl mx-auto mt-10 bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+  <div class="flex items-center justify-between mb-6">
+    <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">✍️ Create New Blog Post</h2>
+    <a href="/admin/blogs" class="text-blue-600 hover:underline text-sm">← Back to Blog List</a>
+  </div>
+
+  <form 
+    action="/admin/blog/create" 
+    method="POST" 
+    enctype="multipart/form-data" 
+    class="space-y-6"
+  >
+    <!-- CSRF Token -->
+    <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+
+    <!-- Title -->
+    <div>
+      <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Blog Title</label>
+      <input 
+        type="text" 
+        id="title" 
+        name="title" 
+        placeholder="Enter blog title..." 
+        class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
+        required
+      >
+    </div>
+
+    <!-- Slug -->
+    <div>
+      <label for="slug" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Slug (URL)</label>
+      <input 
+        type="text" 
+        id="slug" 
+        name="slug" 
+        placeholder="e.g. healthy-eating-habits" 
+        class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
+        required
+      >
+    </div>
+
+    <!-- Category -->
+    <div>
+      <label for="category" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Category</label>
+      <select 
+        id="category" 
+        name="category" 
+        class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-3"
+      >
+        <option value="">Select category...</option>
+        <option value="Nutrition">Nutrition</option>
+        <option value="Fitness">Fitness</option>
+        <option value="Mental Health">Mental Health</option>
+        <option value="Lifestyle">Lifestyle</option>
+      </select>
+    </div>
+
+    <!-- Image Upload -->
+    <div>
+      <label for="image" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Feature Image</label>
+      <input 
+        type="file" 
+        id="image" 
+        name="image" 
+        accept="image/*"
+        class="block w-full text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 rounded-lg p-2 cursor-pointer bg-gray-50 dark:bg-gray-900"
+      >
+    </div>
+
+    <!-- Body -->
+    <div>
+      <label for="body" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Blog Content</label>
+      <textarea 
+        id="body" 
+        name="body" 
+        rows="8" 
+        placeholder="Write your article content here..."
+        class="w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
+        required
+      ></textarea>
+    </div>
+
+    <!-- Publish Button -->
+    <div class="flex justify-end">
+      <button 
+        type="submit"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-lg transition-all shadow-md"
+      >
+        Publish Blog
+      </button>
+    </div>
+  </form>
+</section>
+{{end}}
+
+{{define "scripts"}}
+<script>
+  // Optional: auto-generate slug
+  document.getElementById('title').addEventListener('input', function() {
+    const slugField = document.getElementById('slug');
+    slugField.value = this.value
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)+/g, '');
+  });
+</script>
+{{end}}

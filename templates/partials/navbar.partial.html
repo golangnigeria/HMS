@@ -1,14 +1,6 @@
 {{define "navbar"}}
 <header 
-  x-data="{ open: false, 
-            theme: localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-            toggleTheme() { 
-              this.theme = this.theme === 'light' ? 'dark' : 'light'
-              localStorage.theme = this.theme
-              document.documentElement.setAttribute('data-theme', this.theme)
-            } 
-          }"
-  x-init="document.documentElement.setAttribute('data-theme', theme)"
+
   class="w-full fixed top-0 left-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all">
 
   <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
@@ -23,9 +15,10 @@
     <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700 dark:text-gray-300">
       <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
       <a href="/about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
-      <a href="/blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
+      <a href="/blog/bloglist" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
       <a href="/courses" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Courses</a>
       <a href="/book" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Book a Session</a>
+      <a href="/admin/blog/create" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Create Blog</a>
     </nav>
 
     <!-- Right Side -->
@@ -34,7 +27,7 @@
       <a href="/login" class="px-4 py-2 text-sm font-medium border rounded-lg border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 transition">
         Login
       </a>
-      <a href="/register" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+      <a href="/register" class="px-4 py-2 text-sm font-medium text-white bg-orange-600 rounded-lg hover:bg-orange-700 transition">
         Register
       </a>
     </div>

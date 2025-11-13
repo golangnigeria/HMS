@@ -20,30 +20,20 @@ func SetupRouter(app *config.AppConfig) http.Handler {
 	mux.Use(SessionLoad)
 
 	// --- Public Routes ---
+	mux.Get("/", handlers.Repo.Home)
+	mux.Get("/about", handlers.Repo.About)
+	 
+	// --- Blog Routes ---
 	mux.Group(func(r chi.Router) {
-		r.Get("/", handlers.Repo.Home)
-		r.Get("/about", handlers.Repo.About)
+		r.Get("/blog/bloglist", handlers.Repo.BlogList)
+		r.Get("/blog/{slug}", handlers.Repo.BlogSingle)
 	})
 
-	// --- Doctor Routes ---
-	mux.Route("/doctor", func(r chi.Router) {
-		r.Get("/login", handlers.Repo.DoctorsLoginPage)
-		r.Get("/register", handlers.Repo.DoctorsRegistrationPage)
+	// --- Admin Routes ---
+	mux.Group(func(r chi.Router) {
+		r.Get("/admin/blog/create", handlers.Repo.AdminBlogCreateForm)
 	})
 
-	// --- Patient Routes ---
-	mux.Route("/patient", func(r chi.Router) {
-		r.Get("/login", handlers.Repo.PatientsLoginPage)
-		r.Get("/register", handlers.Repo.PatientsRegistrationPage)
-	})
-
-	// --- Laboratory Routes ---
-	mux.Route("/lab", func(r chi.Router) {
-		r.Get("/login", handlers.Repo.LabLoginPage)
-		r.Get("/register", handlers.Repo.LabRegistrationPage)
-		r.Get("/portal", handlers.Repo.LabPortalPage)
-		r.Get("/tests", handlers.Repo.LabPortalPage) // optional alias
-	})
 
 	// --- Static Files ---
 	fileServer := http.FileServer(http.Dir("./static"))

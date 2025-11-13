@@ -1,0 +1,49 @@
+{{template "base" .}} {{define "title"}}Blog - KiLab{{end}} {{define "css"}}
+<link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+{{end}} {{define "content"}}
+<section
+  class="py-20 bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950"
+>
+  <div class="max-w-6xl mx-auto px-6">
+    <h1
+      class="text-4xl font-extrabold text-center text-slate-800 dark:text-white mb-12"
+    >
+      Health Blog
+    </h1>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      {{range $i, $p := index .Data "posts"}}
+      <a
+        href="/blog/{{$p.Slug}}"
+        class="block group bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg hover:-translate-y-2 transition-transform"
+      >
+        <img
+          src="{{$p.Image}}"
+          alt="{{$p.Title}}"
+          class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div class="p-6 text-left">
+          <h3
+            class="text-xl font-semibold text-slate-800 dark:text-white group-hover:text-primary mb-2"
+          >
+            {{$p.Title}}
+          </h3>
+          <p class="text-slate-500 dark:text-slate-400 text-sm mb-3">
+            {{$p.CreatedAt}}
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 text-sm">
+            {{ $p.Body }}
+          </p>
+          <p class="text-primary mt-3 font-medium">Read More →</p>
+        </div>
+      </a>
+      {{end}}
+    </div>
+  </div>
+</section>
+{{end}} {{define "scripts"}}
+<script src="/static/js/main.js"></script>
+{{end}}

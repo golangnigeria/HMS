@@ -1,9 +1,7 @@
 package render
 
 import (
-	"bytes"
-	"encoding/json" // ✅ Added for toJson
-	"fmt"
+	"bytes" // ✅ Added for toJson
 	"html/template"
 	"log"
 	"net/http"
@@ -16,36 +14,6 @@ import (
 
 var app *config.AppConfig
 var pathToTemplates = "./templates"
-
-// ✅ Add custom functions here
-var functions = template.FuncMap{
-	// Creates a map (dictionary) from key-value pairs
-	"dict": func(values ...interface{}) (map[string]interface{}, error) {
-		if len(values)%2 != 0 {
-			return nil, fmt.Errorf("invalid dict call: odd number of args")
-		}
-		dict := make(map[string]interface{}, len(values)/2)
-		for i := 0; i < len(values); i += 2 {
-			key, ok := values[i].(string)
-			if !ok {
-				return nil, fmt.Errorf("dict keys must be strings")
-			}
-			dict[key] = values[i+1]
-		}
-		return dict, nil
-	},
-	"list": func(args ...interface{}) []interface{} {
-		return args
-	},
-	"toJson": func(v interface{}) string {
-		b, err := json.Marshal(v)
-		if err != nil {
-			log.Println("Error in toJson:", err)
-			return "{}"
-		}
-		return string(b)
-	},
-}
 
 // NewRenderer sets the config for the template package
 func NewRenderer(a *config.AppConfig) {

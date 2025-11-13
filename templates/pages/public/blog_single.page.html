@@ -1,0 +1,61 @@
+{{template "base" .}}
+
+{{define "title"}}{{ (index .Data "post").Title }} - KiLab{{end}}
+
+{{define "css"}}
+<link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+{{end}}
+
+{{define "content"}}
+{{ $p := index .Data "post" }}
+
+<article
+  class="py-20 bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-slate-950"
+>
+  <div class="max-w-4xl mx-auto px-6">
+    <!-- Featured Image -->
+    <img
+      src="{{$p.Image}}"
+      alt="{{$p.Title}}"
+      class="w-full h-72 md:h-96 object-cover rounded-2xl shadow-md mb-8"
+    />
+
+    <!-- Article Header -->
+    <header class="text-center mb-8">
+      <h1
+        class="text-3xl md:text-4xl font-extrabold text-slate-800 dark:text-white mb-3"
+      >
+        {{$p.Title}}
+      </h1>
+      <p class="text-slate-500 dark:text-slate-400 text-sm">
+        Published on {{$p.CreatedAt}}
+      </p>
+    </header>
+
+    <!-- Article Body -->
+    <div
+      class="prose prose-slate dark:prose-invert max-w-none text-slate-700 dark:text-slate-300 leading-relaxed"
+    >
+      {{range $line := (splitLines $p.Body)}}
+      <p>{{$line}}</p>
+      {{end}}
+    </div>
+
+    <!-- Back to Blog Link -->
+    <div class="mt-12 text-center">
+      <a
+        href="/blog/bloglist"
+        class="inline-flex items-center gap-2 text-primary font-medium hover:underline">
+        <i class="ri-arrow-left-line"></i> Back to all articles
+      </a>
+    </div>
+  </div>
+</article>
+{{end}}
+
+{{define "scripts"}}
+<script src="/static/js/main.js"></script>
+{{end}}
