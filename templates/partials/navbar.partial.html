@@ -1,32 +1,26 @@
 {{define "navbar"}}
-<header x-data="{
-    open: false,
-    theme: localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-    toggleTheme() {
-      this.theme = this.theme === 'light' ? 'dark' : 'light';
-      localStorage.theme = this.theme;
-      document.documentElement.classList.toggle('dark', this.theme === 'dark');
-    }
-  }"
-  x-init="document.documentElement.classList.toggle('dark', theme === 'dark')"
-  class="w-full fixed top-0 left-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all">
-
+<header 
+  class="w-full fixed top-0 left-0 z-50 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 transition-all"
+  x-data="navbar()"
+  x-init="init()"
+>
   <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
 
     <!-- Brand -->
     <a href="/" class="flex items-center space-x-2">
-      <img src="/static/logo.png" alt="Logo" class="h-8 w-8 rounded-full object-cover">
+      <img src="/static/assets/favicon.png" alt="Logo" class="h-8 w-8 rounded-full object-cover">
       <span class="text-xl font-semibold text-gray-900 dark:text-white">Dr. KiLab</span>
     </a>
 
     <!-- Desktop Nav -->
-    <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-700 dark:text-gray-300">
-      <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
-      <a href="/about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
-      <a href="/blog/bloglist" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
-      <a href="/courses" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Courses</a>
-      <a href="/book" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Book a Session</a>
-      <a href="/admin/blog/create" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Create Blog</a>
+    <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+      <template x-for="link in links" :key="link.href">
+        <a :href="link.href" 
+           :class="{'text-blue-600 dark:text-blue-400': isActive(link.href), 'text-gray-700 dark:text-gray-300': !isActive(link.href)}"
+           class="hover:text-blue-600 dark:hover:text-blue-400 transition">
+          <span x-text="link.label"></span>
+        </a>
+      </template>
     </nav>
 
     <!-- Right Side -->
@@ -53,16 +47,15 @@
   <!-- Mobile Dropdown -->
   <div x-show="open" x-transition @click.away="open = false"
        class="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 px-4 py-4 space-y-3">
-    <a href="/" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Home</a>
-    <a href="/about" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">About</a>
-    <a href="/blog/bloglist" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Blog</a>
-    <a href="/courses" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Courses</a>
-    <a href="/book" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Book a Session</a>
-    <a href="/admin/blog/create" class="block text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Create Blog</a>
-
+    <template x-for="link in links" :key="link.href">
+      <a :href="link.href"
+         :class="{'text-blue-600 dark:text-blue-400': isActive(link.href), 'text-gray-700 dark:text-gray-300': !isActive(link.href)}"
+         class="block hover:text-blue-600 dark:hover:text-blue-400">
+        <span x-text="link.label"></span>
+      </a>
+    </template>
     <div class="flex items-center justify-between pt-3 border-t border-gray-200 dark:border-gray-800">
-      <button @click="toggleTheme"
-              class="text-sm text-gray-600 dark:text-gray-300">
+      <button @click="toggleTheme" class="text-sm text-gray-600 dark:text-gray-300">
         <span x-text="theme === 'light' ? '🌙 Dark' : '☀️ Light'"></span>
       </button>
       <div class="flex space-x-2">
@@ -71,5 +64,37 @@
       </div>
     </div>
   </div>
+
+  <!-- Alpine.js Logic -->
+  <script>
+    function navbar() {
+      return {
+        open: false,
+        theme: localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+        links: [
+          { href: '/', label: 'Home' },
+          { href: '/about', label: 'About' },
+          { href: '/blog/bloglist', label: 'Blog' },
+         /*  { href: '/courses', label: 'Courses' },
+          { href: '/book', label: 'Book a Session' }, */
+          { href: '/admin/blog/create', label: 'Create Blog' }
+        ],
+
+        init() {
+          document.documentElement.classList.toggle('dark', this.theme === 'dark');
+        },
+
+        toggleTheme() {
+          this.theme = this.theme === 'light' ? 'dark' : 'light';
+          localStorage.theme = this.theme;
+          document.documentElement.classList.toggle('dark', this.theme === 'dark');
+        },
+
+        isActive(href) {
+          return window.location.pathname === href;
+        }
+      }
+    }
+  </script>
 </header>
 {{end}}

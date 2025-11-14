@@ -13,21 +13,21 @@
 {{define "content"}}
 
 <!-- 🌟 HERO SECTION -->
-<section class="relative py-24 text-center overflow-hidden bg-gradient-to-b from-primary/10 to-white dark:from-slate-800 dark:to-slate-900">
+<section class="relative py-16 md:py-24 text-center overflow-hidden bg-gradient-to-b from-primary/10 to-white dark:from-slate-800 dark:to-slate-900">
   <div class="container mx-auto px-6" x-data="{ show: false }" x-init="setTimeout(() => show = true, 200)">
     <div x-show="show" x-transition.duration.800ms>
-      <h1 class="text-5xl md:text-6xl font-extrabold text-primary mb-4 leading-tight">
+      <h1 class="text-4xl md:text-6xl font-extrabold text-primary mb-4 leading-tight">
         {{index .StringMap "welcome"}}
       </h1>
-      <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto text-lg leading-relaxed">
+      <p class="text-slate-600 dark:text-slate-300 max-w-2xl mx-auto  leading-relaxed">
         {{index .StringMap "tagline"}}
       </p>
 
       <div class="mt-10 flex justify-center gap-4">
-        <a href="/consultation/book" class="px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition">
+        <a href="/consultation/book" class="px-2 md:px-6 py-2 md:py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary/90 transition text-sm">
           Book Consultation
         </a>
-        <a href="/blog/bloglist" class="px-6 py-3 border border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition">
+        <a href="/blog/bloglist" class=" px-2 md:px-6 py-2 md:py-3 border border-primary text-primary font-semibold rounded-xl hover:bg-primary hover:text-white transition">
           Read Articles
         </a>
       </div>

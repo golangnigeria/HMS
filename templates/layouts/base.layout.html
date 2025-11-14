@@ -1,13 +1,6 @@
 {{define "base"}}
 <!DOCTYPE html>
-<html lang="en" x-data="{ 
-  theme: localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-  toggleTheme() {
-    this.theme = this.theme === 'light' ? 'dark' : 'light';
-    localStorage.theme = this.theme;
-  }
-}" x-init="$watch('theme', val => document.documentElement.setAttribute('data-theme', val))" 
-x-bind:data-theme="theme">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,7 +29,10 @@ x-bind:data-theme="theme">
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 </head>
 
-<body >
+<body 
+    x-data="baseLayout()"
+    x-init="init()"
+    class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 font-sans">
   <div class="layout">
     <!-- Navbar -->
     {{template "navbar" .}}
@@ -56,7 +52,18 @@ x-bind:data-theme="theme">
   {{block "scripts" .}}{{end}}
 
   <script>
-   
+   function baseLayout() {
+  return {
+    sidebarOpen: false,
+    theme: localStorage.theme 
+      || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+
+    init() {
+      document.documentElement.classList.toggle('dark', this.theme === 'dark');
+    },
+
+  }
+}
   </script>
 </html>
 {{end}}

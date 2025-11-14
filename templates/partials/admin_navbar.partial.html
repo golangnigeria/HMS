@@ -1,58 +1,43 @@
 {{define "admin_navbar"}}
 <!-- Navbar -->
-<header x-data="navbar()" x-init="init()" class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40">
+<header 
+  x-data="navbar()" 
+  x-init="start()" 
+  class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-40"
+>
+
   <div class="flex items-center justify-between px-6 py-3">
 
-    <!-- Sidebar toggle for mobile -->
-    <button @click="toggleSidebar()" class="text-gray-600 dark:text-gray-300 md:hidden">
+    <!-- Mobile Sidebar Button -->
+    <button @click="toggleSidebar" class="text-gray-600 dark:text-gray-300 md:hidden">
       <i class="ri-menu-line text-2xl"></i>
     </button>
 
-    <!-- Page title -->
-    <h1 class="text-lg font-semibold text-gray-800 dark:text-gray-100">{{block "title" .}}Admin Dashboard{{end}}</h1>
+    <!-- Page Title -->
+    <h1 class="md:text-lg text-sm px-2 font-semibold text-gray-800 dark:text-gray-100">
+      {{block "title" .}}Admin Dashboard{{end}}
+    </h1>
 
-    <!-- Right controls -->
+    <!-- Right Side Controls -->
     <div class="flex items-center space-x-4">
-      <!-- Dark/Light toggle -->
-      <button @click="toggleTheme()" class="text-gray-600 dark:text-gray-300 hover:text-blue-600">
+
+      <!-- Theme Toggle -->
+      <button @click="toggleTheme" class="text-gray-600 dark:text-gray-300 hover:text-blue-600">
+        <!-- Show moon icon if theme is light -->
         <i x-show="theme === 'light'" class="ri-moon-line text-xl"></i>
+        <!-- Show sun icon if theme is dark -->
         <i x-show="theme === 'dark'" class="ri-sun-line text-xl"></i>
       </button>
 
-      <!-- View Site -->
+      <!-- View Site Link -->
       <a href="/" class="text-sm font-medium text-blue-600 hover:underline">View Site</a>
 
-      <!-- Profile dropdown -->
-      <div class="relative group">
-        <img src="/static/images/avatar.png" alt="Admin" class="h-8 w-8 rounded-full object-cover border">
-        <div class="absolute right-0 hidden group-hover:block mt-2 bg-white dark:bg-gray-800 shadow-lg rounded-lg w-40 text-sm">
-          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700">Profile</a>
-          <a href="/logout" class="block px-4 py-2 text-red-600 hover:bg-gray-100 dark:hover:bg-gray-700">Logout</a>
-        </div>
-      </div>
+    
+
     </div>
 
   </div>
 
-  <!-- Alpine.js script for navbar -->
-  <script>
-    function navbar() {
-      return {
-        theme: localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-        sidebarOpen: false,
-        init() {
-          document.documentElement.classList.toggle('dark', this.theme === 'dark');
-        },
-        toggleTheme() {
-          this.theme = this.theme === 'light' ? 'dark' : 'light';
-          localStorage.theme = this.theme;
-          document.documentElement.classList.toggle('dark', this.theme === 'dark');
-        },
-        toggleSidebar() {
-          this.sidebarOpen = !this.sidebarOpen;
-        }
-      }
-    }
-  </script>
+
 </header>
 {{end}}

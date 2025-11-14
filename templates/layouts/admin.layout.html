@@ -1,18 +1,6 @@
 {{define "admin"}}
 <!DOCTYPE html>
-<html lang="en" 
-      x-data="{
-        sidebarOpen: false,
-        theme: localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
-        init() { document.documentElement.setAttribute('data-theme', this.theme) },
-        toggleSidebar() { this.sidebarOpen = !this.sidebarOpen },
-        toggleTheme() {
-          this.theme = this.theme === 'light' ? 'dark' : 'light';
-          localStorage.theme = this.theme;
-          document.documentElement.setAttribute('data-theme', this.theme);
-        }
-      }" 
-      x-init="init()">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,12 +12,14 @@
   <!-- Remix Icons -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 
-  <!-- Alpine.js -->
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+ 
 
   {{block "css" .}}{{end}}
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100">
+<body 
+    x-data="adminLayout()"
+    x-init="init()"
+    class="bg-gray-100 dark:bg-gray-900 font-sans text-gray-900 dark:text-gray-100">
 
 <!-- Layout Container -->
 <div class="flex h-screen overflow-hidden">
@@ -54,29 +44,36 @@
 
 </div>
 
+
+ <!-- Alpine.js -->
+<script src="//unpkg.com/alpinejs" defer></script>
+
+
 <!-- Global Scripts -->
 <script>
 function adminLayout() {
   return {
     sidebarOpen: false,
-    theme: localStorage.theme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+    theme: localStorage.theme 
+      || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
+
     init() {
-      this.setTheme(this.theme);
+      document.documentElement.classList.toggle('dark', this.theme === 'dark');
     },
-    toggleSidebar() {
-      this.sidebarOpen = !this.sidebarOpen;
+
+    toggleSidebar: function() {
+             this.sidebarOpen = !this.sidebarOpen;
     },
+
     toggleTheme() {
       this.theme = this.theme === 'light' ? 'dark' : 'light';
       localStorage.theme = this.theme;
-      this.setTheme(this.theme);
-    },
-    setTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.classList.toggle('dark', this.theme === 'dark');
     }
   }
 }
 </script>
+
 
 {{block "scripts" .}}{{end}}
 </body>

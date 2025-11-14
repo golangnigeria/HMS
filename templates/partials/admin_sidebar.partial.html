@@ -1,32 +1,51 @@
 {{define "admin_sidebar"}}
- <!-- Sidebar -->
-  <aside class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 transform transition-transform duration-300 ease-in-out"
-         :class="{'-translate-x-full md:translate-x-0': !sidebarOpen}">
-    <div class="flex items-center justify-between px-6 py-4 border-b dark:border-gray-700">
-      <a href="/admin" class="flex items-center space-x-2">
-        <img src="/static/logo.png" alt="Logo" class="h-8 w-8 rounded-full object-cover">
-        <span class="font-semibold text-gray-800 dark:text-white text-lg">KiLab Admin</span>
-      </a>
-      <button class="md:hidden text-gray-600 dark:text-gray-300" @click="sidebarOpen = true">
-        <i class="ri-close-line text-2xl"></i>
-      </button>
-    </div>
-    <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
-      <a href="/admin" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-        <i class="ri-dashboard-line mr-3 text-xl text-blue-600"></i> Dashboard
-      </a>
-      <a href="/admin/blog/create" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-        <i class="ri-edit-2-line mr-3 text-xl text-blue-600"></i> Create Blog
-      </a>
-      <a href="/admin/blogs" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-        <i class="ri-article-line mr-3 text-xl text-blue-600"></i> Manage Blogs
-      </a>
-      <a href="/admin/courses" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-        <i class="ri-graduation-cap-line mr-3 text-xl text-blue-600"></i> Courses
-      </a>
-      <a href="/admin/bookings" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-        <i class="ri-calendar-line mr-3 text-xl text-blue-600"></i> Bookings
-      </a>
-    </nav>
-  </aside>
+<!-- Sidebar -->
+<aside 
+  class="fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-gray-800 
+         border-r border-gray-200 dark:border-gray-700 
+         transform transition-transform duration-300 ease-in-out"
+  :class="{'-translate-x-full md:translate-x-0': !sidebarOpen}"
+>
+  <!-- Header -->
+  <div class="flex items-center justify-between px-6 py-4 border-b dark:border-gray-700">
+
+    <!-- Logo -->
+    <a href="/admin" class="flex items-center space-x-2">
+      <img src="/static/assets/favicon.png" alt="Logo" class="h-8 w-8 rounded-full object-cover">
+      <span class="font-semibold text-gray-800 dark:text-white text-lg">KiLab Admin</span>
+    </a>
+
+    <!-- Close button (mobile only) -->
+    <button 
+      class="md:hidden text-gray-600 dark:text-gray-300" 
+      @click="sidebarOpen = false"
+    >
+      <i class="ri-close-line text-2xl"></i>
+    </button>
+  </div>
+
+  <!-- Menu -->
+  <nav class="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+    <a href="/admin" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+      <i class="ri-dashboard-line mr-3 text-xl text-blue-600"></i> Dashboard
+    </a>
+
+    <a href="/admin/blog/create" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+      <i class="ri-edit-2-line mr-3 text-xl text-blue-600"></i> Create Blog
+    </a>
+
+    <a href="/admin/blogs" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+      <i class="ri-article-line mr-3 text-xl text-blue-600"></i> Manage Blogs
+    </a>
+
+    <a href="/admin/courses" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+      <i class="ri-graduation-cap-line mr-3 text-xl text-blue-600"></i> Courses
+    </a>
+
+    <a href="/admin/bookings" class="flex items-center px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+      <i class="ri-calendar-line mr-3 text-xl text-blue-600"></i> Bookings
+    </a>
+  </nav>
+
+</aside>
 {{end}}
